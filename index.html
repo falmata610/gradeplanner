@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>GradePlanner</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app">
+    <header class="app-header">
+      <div>
+        <h1>GradePlanner</h1>
+        <p class="muted">Simple 80/20 (or custom) grades. Autosave. What-if.</p>
+      </div>
+      <div class="header-actions">
+        <button id="addCourseBtn" class="btn btn-primary">+ Course</button>
+        <button id="exportBtn" class="btn">Export</button>
+        <label class="btn file-label">
+          Import
+          <input type="file" id="importInput" accept="application/json" hidden />
+        </label>
+        <button id="settingsBtn" class="btn">Settings</button>
+      </div>
+    </header>
+
+    <!-- What-if -->
+    <section class="card">
+      <h2>What-if</h2>
+      <div class="grid g-5">
+        <div>
+          <label class="label">Course</label>
+          <select id="whatIfCourse" class="input"></select>
+        </div>
+        <div>
+          <label class="label">Category</label>
+          <select id="whatIfCategory" class="input"></select>
+        </div>
+        <div>
+          <label class="label">Earned</label>
+          <input id="whatIfEarned" type="number" step="any" class="input" value="0" />
+        </div>
+        <div>
+          <label class="label">Possible</label>
+          <input id="whatIfPossible" type="number" step="any" class="input" value="0" />
+        </div>
+        <div class="projected">
+          <div class="muted">Projected Grade</div>
+          <div id="whatIfProjected" class="big">—</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Courses -->
+    <section class="card">
+      <div class="flex-row">
+        <h2>Your Courses</h2>
+        <span class="muted">Tap a tab to switch subjects.</span>
+      </div>
+
+      <!-- NEW: course tabs -->
+      <div id="courseTabs" class="tabs"></div>
+
+      <!-- Only the selected course is rendered here -->
+      <div id="courses"></div>
+    </section>
+
+    <!-- Settings modal -->
+    <dialog id="settingsDlg" class="dialog">
+      <form method="dialog" class="dialog-body">
+        <h3>Settings</h3>
+        <div class="section-title">Letter grade cutoffs</div>
+        <p class="muted" style="margin-top:-6px;">
+          Preset:
+          <button id="presetMPS" class="btn btn-ghost" type="button">MPS-style</button>
+          <button id="presetSimple" class="btn btn-ghost" type="button">custom</button>
+        </p>
+        <div class="grid g-5">
+          <div><label class="label">A</label><input id="cutA" class="input" type="number" step="0.1" /></div>
+          <div><label class="label">A-</label><input id="cutAminus" class="input" type="number" step="0.1" /></div>
+          <div><label class="label">B+</label><input id="cutBplus" class="input" type="number" step="0.1" /></div>
+          <div><label class="label">B</label><input id="cutB" class="input" type="number" step="0.1" /></div>
+          <div><label class="label">B-</label><input id="cutBminus" class="input" type="number" step="0.1" /></div>
+          <div><label class="label">C+</label><input id="cutCplus" class="input" type="number" step="0.1" /></div>
+          <div><label class="label">C</label><input id="cutC" class="input" type="number" step="0.1" /></div>
+          <div><label class="label">C-</label><input id="cutCminus" class="input" type="number" step="0.1" /></div>
+          <div><label class="label">D+</label><input id="cutDplus" class="input" type="number" step="0.1" /></div>
+          <div><label class="label">D</label><input id="cutD" class="input" type="number" step="0.1" /></div>
+          <div><label class="label">D-</label><input id="cutDminus" class="input" type="number" step="0.1" /></div>
+        </div>
+        <div class="dialog-actions">
+          <button value="cancel" class="btn">Close</button>
+          <button id="saveSettingsBtn" value="default" class="btn btn-primary">Save</button>
+        </div>
+      </form>
+    </dialog>
+
+    <footer class="muted center">All data stays in your browser (localStorage). © GradePlanner</footer>
+  </div>
+
+  <script src="app.js"></script>
+  <script>
+  alert("Inline JS loaded");
+</script>
+``>
+- If the alert pops → Pages is fine; the problem is linking `app.js`.
+- If no alert → your `index.html` isn’t being served (go back to Step 2).
+
+---
+
+If you want, drop your exact repo name (with dashes/case) and I’ll tell you the *one line* to change. But 99% of the time it’s:
+- files not at repo root, or
+- `app.js` filename/path not matching the `<script src="app.js">`.
+::contentReference[oaicite:0]{index=0}
+
+</body>
+</html>
