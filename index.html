@@ -98,20 +98,6 @@
     <footer class="muted center">All data stays in your browser (localStorage). © GradePlanner</footer>
   </div>
 
-  <script src="app.js"></script>
-  <script>
-  alert("Inline JS loaded");
-</script>
-``>
-- If the alert pops → Pages is fine; the problem is linking `app.js`.
-- If no alert → your `index.html` isn’t being served (go back to Step 2).
-
----
-
-If you want, drop your exact repo name (with dashes/case) and I’ll tell you the *one line* to change. But 99% of the time it’s:
-- files not at repo root, or
-- `app.js` filename/path not matching the `<script src="app.js">`.
-::contentReference[oaicite:0]{index=0}
-
+  <script src="./app.js"></script>
 </body>
 </html>
