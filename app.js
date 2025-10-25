@@ -110,7 +110,7 @@ const $cut = {
 };
 const $saveSettings = document.getElementById("saveSettingsBtn");
 const $presetMPS = document.getElementById("presetMPS");
-const $presetSimple = document.getElementById("presetSimple");
+const $presetCustom = document.getElementById("presetCustom");
 
 // ========== Render ==========
 
@@ -403,13 +403,14 @@ $saveSettings.addEventListener("click",(e)=>{
   Object.keys(gradeCuts).forEach(k=>{ const v=Number($cut[k].value); if (!isNaN(v)) gradeCuts[k]=v; });
   save(); refreshAllDerivedUI(); $dlg.close();
 });
-$presetSimple.addEventListener("click", ()=>{
-  gradeCuts = { A:90,Aminus:85,Bplus:80,B:75,Bminus:70,Cplus:65,C:60,Cminus:55,Dplus:50,D:45,Dminus:40 };
+$presetMPS.addEventListener("click", ()=>{
+  gradeCuts = { A:90, Aminus:85, Bplus:80, B:75, Bminus:65, Cplus:63, C:60, Cminus:55, Dplus:50, D:45, Dminus:40 };
   Object.entries(gradeCuts).forEach(([k,v])=>{ const el=$cut[k]; if(el) el.value = v; });
 });
-$presetSimple.addEventListener("click", ()=>{
-  gradeCuts = { A:90,Aminus:85,Bplus:80,B:75,Bminus:70,Cplus:65,C:60,Cminus:55,Dplus:50,D:45,Dminus:40 };
-  Object.entries(gradeCuts).forEach(([k,v])=>{ const el=$cut[k]; if(el) el.value = v; });
+// "Custom" does not overwrite values; user edits inputs then clicks Save
+$presetCustom.addEventListener("click", ()=>{
+  // no-op on purpose; just a nudge/help text could be added here
+  alert("Type your own cutoffs below, then click Save.");
 });
 
 // ========== Utils ==========
